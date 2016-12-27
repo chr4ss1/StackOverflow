@@ -159,11 +159,6 @@ private async Task CopyContainers(
             continue;
         }
 
-        // acquire lease on the source blob,
-        // as we don't want anyone to mess with this blob
-        // while we are in the middle of backuping.
-        await srcCloudBlob.AcquireLeaseAsync(null);
-
         CloudBlob destCloudBlob;
 
         if (srcCloudBlob.Properties.BlobType == BlobType.BlockBlob)
